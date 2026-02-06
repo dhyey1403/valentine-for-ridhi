@@ -56,34 +56,42 @@ const celebration = document.getElementById("celebration");
 // Make the No button run away when clicked
 noButton.addEventListener("click", (e) => {
     e.preventDefault();
-    // Keep button in center area of screen (middle 60%)
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const rangeX = window.innerWidth * 0.3;
-    const rangeY = window.innerHeight * 0.3;
+    // Keep button strictly in visible area
+    const btnWidth = noButton.offsetWidth || 100;
+    const btnHeight = noButton.offsetHeight || 50;
     
-    const randomX = centerX - rangeX + Math.floor(Math.random() * rangeX * 2);
-    const randomY = centerY - rangeY + Math.floor(Math.random() * rangeY * 2);
+    const minX = btnWidth;
+    const maxX = window.innerWidth - btnWidth * 2;
+    const minY = window.innerHeight * 0.4;
+    const maxY = window.innerHeight * 0.7;
+    
+    const randomX = minX + Math.floor(Math.random() * (maxX - minX));
+    const randomY = minY + Math.floor(Math.random() * (maxY - minY));
     
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
+    noButton.style.transform = "none";
 });
 
 // Also handle touch for mobile
 noButton.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const rangeX = window.innerWidth * 0.3;
-    const rangeY = window.innerHeight * 0.3;
+    const btnWidth = noButton.offsetWidth || 100;
+    const btnHeight = noButton.offsetHeight || 50;
     
-    const randomX = centerX - rangeX + Math.floor(Math.random() * rangeX * 2);
-    const randomY = centerY - rangeY + Math.floor(Math.random() * rangeY * 2);
+    const minX = btnWidth;
+    const maxX = window.innerWidth - btnWidth * 2;
+    const minY = window.innerHeight * 0.4;
+    const maxY = window.innerHeight * 0.7;
+    
+    const randomX = minX + Math.floor(Math.random() * (maxX - minX));
+    const randomY = minY + Math.floor(Math.random() * (maxY - minY));
     
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
+    noButton.style.transform = "none";
 });
 
 yesButton.addEventListener("click", () => {
