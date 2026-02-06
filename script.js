@@ -55,10 +55,11 @@ const celebration = document.getElementById("celebration");
 
 // Make the No button run away when hovered
 noButton.addEventListener("mouseover", () => {
-    const maxX = window.innerWidth - noButton.offsetWidth - 50;
-    const maxY = window.innerHeight - noButton.offsetHeight - 50;
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    const padding = 100;
+    const maxX = window.innerWidth - noButton.offsetWidth - padding;
+    const maxY = window.innerHeight - noButton.offsetHeight - padding;
+    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
     
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
@@ -68,10 +69,11 @@ noButton.addEventListener("mouseover", () => {
 // Also handle touch for mobile
 noButton.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    const maxX = window.innerWidth - noButton.offsetWidth - 50;
-    const maxY = window.innerHeight - noButton.offsetHeight - 50;
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    const padding = 100;
+    const maxX = window.innerWidth - noButton.offsetWidth - padding;
+    const maxY = window.innerHeight - noButton.offsetHeight - padding;
+    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
     
     noButton.style.position = "fixed";
     noButton.style.left = randomX + "px";
