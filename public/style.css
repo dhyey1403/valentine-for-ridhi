@@ -3,12 +3,13 @@ html, body {
     padding: 0 !important;
     overflow: hidden;
     cursor: url('./images/pointer.png'), auto;
+    background: #1a0a0a;
 }
 
 canvas {
     width: 100%;
     height: auto;
-    background: #111;
+    background: linear-gradient(135deg, #1a0a0a 0%, #2d0a1a 50%, #1a0a0a 100%);
 }
 
 #valentineQuestion {
@@ -22,9 +23,9 @@ canvas {
 }
 
 #valentineQuestion p {
-    color: #fff;
+    color: #ffb6c1;
     font-size: 24px;
-    text-shadow: 0 0 10px rgba(45, 45, 255, 1);
+    text-shadow: 0 0 10px rgba(255, 105, 135, 0.8);
     margin-bottom: 20px;
 }
 
@@ -55,14 +56,14 @@ canvas {
 }
 
 #noButton {
-    background-color: #666;
-    border: 2px solid #666;
+    background-color: #8b5a6b;
+    border: 2px solid #8b5a6b;
     color: #fff;
     position: relative;
 }
 
 #noButton:hover {
-    background-color: #444;
+    background-color: #6b4a5b;
 }
 
 #celebration {
@@ -73,11 +74,18 @@ canvas {
     text-align: center;
 }
 
+#happyCat {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
 #celebration p {
-    color: #ff4d6d;
+    color: #ff6b8a;
     font-size: 48px;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+    text-shadow: 0 0 20px rgba(255, 107, 138, 0.8);
     animation: pulse 1s ease-in-out infinite;
 }
 
