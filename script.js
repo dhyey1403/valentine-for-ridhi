@@ -84,6 +84,10 @@ yesButton.addEventListener("click", () => {
     valentineQuestion.style.display = "none";
     celebration.style.display = "block";
     
+    // Hide the canvas and show blank background
+    canvas.style.display = "none";
+    document.body.style.backgroundColor = "#111";
+    
     // Create heart explosion effect
     createHearts();
 });
