@@ -11,24 +11,77 @@ canvas {
     background: #111;
 }
 
-#valentinesButton {
+#valentineQuestion {
     display: none;
     position: absolute;
-    background-color: #2d2dff;
-    border: 2px solid #2d2dff;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-size: 16px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    border-radius: 10px;
-    top: calc(50% + 150px); /* Adjust based on canvas height and text position */
+    top: calc(50% + 150px);
     left: 50%;
     transform: translateX(-50%);
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
-  #valentinesButton:hover {
-    background-color: #1f1faa;
-    color: #eee;
+#valentineQuestion p {
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(45, 45, 255, 1);
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+#yesButton, #noButton {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#yesButton {
+    background-color: #ff4d6d;
+    border: 2px solid #ff4d6d;
+    color: #fff;
+}
+
+#yesButton:hover {
+    background-color: #ff1744;
+    transform: scale(1.1);
+}
+
+#noButton {
+    background-color: #666;
+    border: 2px solid #666;
+    color: #fff;
+    position: relative;
+}
+
+#noButton:hover {
+    background-color: #444;
+}
+
+#celebration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#celebration p {
+    color: #ff4d6d;
+    font-size: 48px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }

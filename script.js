@@ -48,26 +48,42 @@ function updateStars() {
     }
 }
 
-const button = document.getElementById("valentinesButton");
+const valentineQuestion = document.getElementById("valentineQuestion");
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+const celebration = document.getElementById("celebration");
 
-button.addEventListener("click", () => {
-  if (button.textContent === "Click Me! ❤") {
-    button.textContent = "loading...";
-    fetch('send_mail.php')
-      .then(response => {
-        if (response.ok) {
-          button.textContent = "Check Your Email 🙃";
-        } else {
-          console.error('Failed to send email');
-          button.textContent = "Error 😞";
-        }
-      })
-      .catch(error => {
-        // Handle network errors or other issues
-        console.error('Error:', error);
-        button.textContent = "Error 😞";
-      });
-  }
+// Make the No button run away when hovered
+noButton.addEventListener("mouseover", () => {
+    const maxX = window.innerWidth - noButton.offsetWidth - 50;
+    const maxY = window.innerHeight - noButton.offsetHeight - 50;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    
+    noButton.style.position = "fixed";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+});
+
+// Also handle touch for mobile
+noButton.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    const maxX = window.innerWidth - noButton.offsetWidth - 50;
+    const maxY = window.innerHeight - noButton.offsetHeight - 50;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    
+    noButton.style.position = "fixed";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+});
+
+yesButton.addEventListener("click", () => {
+    valentineQuestion.style.display = "none";
+    celebration.style.display = "block";
+    
+    // Create heart explosion effect
+    createHearts();
 });
 
 function drawTextWithLineBreaks(lines, x, y, fontSize, lineHeight) {
@@ -189,9 +205,9 @@ function drawText() {
         context.fillStyle = `rgba(45, 45, 255, ${opacity})`;
 
         if (window.innerWidth < 600) {
-            drawTextWithLineBreaks(["I love you so much {name}, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
+            drawTextWithLineBreaks(["I love you so much Ridhi, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
         } else {
-            context.fillText("I love you so much {name}, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
+            context.fillText("I love you so much Ridhi, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
         }
 
         opacity = opacity + 0.01;
@@ -215,7 +231,7 @@ function drawText() {
         context.fillText("Happy Valentine's Day <3", canvas.width/2, (canvas.height/2 + 120));
         thirdOpacity = thirdOpacity + 0.01;
 
-        button.style.display = "block";
+        valentineQuestion.style.display = "block";
     }   
 
      // Reset the shadow effect after drawing the text
@@ -245,3 +261,32 @@ window.addEventListener("resize", function () {
 });
 
 window.requestAnimationFrame(draw);
+
+
+// Heart explosion effect
+function createHearts() {
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.style.position = "fixed";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = window.innerHeight + "px";
+            heart.style.fontSize = (Math.random() * 30 + 20) + "px";
+            heart.style.opacity = "1";
+            heart.style.pointerEvents = "none";
+            heart.style.zIndex = "1000";
+            heart.style.transition = "all 3s ease-out";
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.top = -100 + "px";
+                heart.style.opacity = "0";
+            }, 50);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3500);
+        }, i * 100);
+    }
+}
